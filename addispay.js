@@ -459,7 +459,7 @@ const directPayout = async (payoutData) => {
   return await response.json();
 };
 
-// module.exports = {
-//   createOrder,
-//   directPayout,
-// };
+module.exports = {
+  createOrder,
+  directPayout,
+};
