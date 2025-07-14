@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  margin: 0;
+  background: #f0f2f5;
+  color: #333;
+}
+.container {
+  max-width: 480px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+.tabs {
+  display: flex;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #eee;
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: #666;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+.tab.active {
+  color: rgb(5, 161, 5);
+  border-color: #0daa15;
+}
+
+.card {
+  padding: 20px 16px;
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: inset 0 0 8px #ddd;
+  transition: opacity 0.3s ease;
+}
+.hidden {
+  display: none;
+}
+h2 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #222;
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 16px;
+}
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+input[type='text'],
+input[type='tel'],
+input[type='number'],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1.8px solid #ccc;
+  font-size: 15px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+input[type='text']:focus,
+input[type='tel']:focus,
+input[type='number']:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #049e1e;
+  background-color: #fff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+textarea {
+  min-height: 60px;
+}
+.btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+  background-color: #06c45b;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 12px;
+}
+.btn:disabled {
+  background-color: #a1cafc;
+  cursor: not-allowed;
+}
+.btn:hover:not(:disabled) {
+  background-color: #3fc561;
+}
+
+.status {
+  margin-top: 16px;
+  font-weight: 600;
+  text-align: center;
+  min-height: 24px;
+}
+.error {
+  color: #d9534f;
+}
+.success {
+  color: #28a745;
+}
+.spinner {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  border: 3px solid #ccc;
+  border-top: 3px solid #06c546;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

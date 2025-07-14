@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AddisPay</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="tabs">
+        <div class="tab active" data-tab="checkout">Checkout</div>
+        <div class="tab" data-tab="withdraw">Withdraw</div>
+      </div>
+
+      <!-- Checkout Form -->
+      <div class="card" id="checkout-form">
+        <h2>Make Payment</h2>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="251900000000" required />
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount (ETB) *</label>
+          <input type="number" id="amount" min="1" value="10" required />
+        </div>
+        <div class="form-group">
+          <label for="reason">Payment Reason *</label>
+          <textarea
+            id="reason"
+            placeholder="Describe your payment"
+            required
+          ></textarea>
+        </div>
+        <button class="btn" id="checkout-btn">Proceed to Payment</button>
+        <div id="checkout-status" class="status"></div>
+      </div>
+
+      <!-- Withdrawal Form -->
+      <div class="card hidden" id="withdraw-form">
+        <h2>Withdraw Funds</h2>
+        <div class="form-group">
+          <label>Payment Method *</label>
+          <select id="payment-method" required>
+            <option value="telebirr">Telebirr</option>
+            <option value="bank">Local Bank Transfer</option>
+          </select>
+        </div>
+
+        <div id="telebirr-fields">
+          <div class="form-group">
+            <label>TeleBirr Phone *</label>
+            <input
+              type="tel"
+              id="withdraw-phone"
+              placeholder="251900000000"
+              required
+            />
+          </div>
+        </div>
+
+        <div id="bank-fields" class="hidden">
+          <div class="form-group">
+            <label>Bank *</label>
+            <select id="bank-code" required>
+              <option value="CBET">Commercial Bank of Ethiopia</option>
+              <option value="AWIB">Awash Bank</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Account Number *</label>
+            <input type="text" id="account-number" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Amount (ETB) *</label>
+          <input type="number" id="withdraw-amount" min="1" required />
+        </div>
+
+        <div class="form-group">
+          <label>Withdrawal Reason *</label>
+          <textarea id="withdraw-reason" required></textarea>
+        </div>
+
+        <button class="btn" id="withdraw-btn">Withdraw Funds</button>
+        <div id="withdraw-status" class="status"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
