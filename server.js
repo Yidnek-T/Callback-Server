@@ -66,7 +66,7 @@ app.post('/api/create-order', async (req, res) => {
 
     res.json({
       success: true,
-      checkout_url: `${result.checkout_url}`, ///${result.uuid || uuid}
+      checkout_url: `${result.checkout_url}/${result.uuid || uuid}`, 
       uuid: result.uuid || uuid,
     });
   } catch (error) {
