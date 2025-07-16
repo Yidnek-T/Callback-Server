@@ -288,144 +288,13 @@
 // For User Acceptance  Testing
 
 // // addispay.js
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
-const baseUrl = 'https://uat.api.addispay.et/checkout-api/v1';
-const apiKey = 'd686e83b-9504-4ac9-bf33-453c3c21f8e0';
+// const baseUrl = 'https://uat.api.addispay.et/checkout-api/v1';
+// const apiKey = 'd686e83b-9504-4ac9-bf33-453c3c21f8e0';
 
-// 1. Create order
-export const createOrder = async (paymentData) => {
-  const url = `${baseUrl}/create-order`;
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Auth: apiKey,
-    },
-    body: JSON.stringify(paymentData),
-  };
-
-  try {
-    const response = await fetch(url, options);
-    if (!response.ok) throw new Error(await response.text());
-    const data = await response.json();
-    console.log('Order created:', data);
-    return data;
-  } catch (error) {
-    console.error(' Error creating order:', error.message);
-    throw error;
-  }
-};
-
-// 2. Check order by UUID
-export const checkOrder = async (uuid) => {
-  const url = `${baseUrl}/get-order?uuid=${uuid}`;
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        Auth: apiKey,
-      },
-    });
-
-    if (!response.ok) throw new Error(await response.text());
-    const data = await response.json();
-    console.log(` Order retrieved [UUID: ${uuid}]:`, data);
-    return { data, uuid };
-  } catch (error) {
-    console.error(' Error checking order:', error.message);
-    throw error;
-  }
-};
-
-// 3. Initiate payment
-export const handlePayment = async (paymentPayload) => {
-  const url = `${baseUrl}/payment/initiate-payment`;
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Auth: apiKey,
-    },
-    body: JSON.stringify(paymentPayload),
-  };
-
-  try {
-    const response = await fetch(url, options);
-    if (!response.ok) throw new Error(await response.text());
-    const data = await response.json();
-    console.log('Payment initiated:', data);
-    return data;
-  } catch (error) {
-    console.error(' Error initiating payment:', error.message);
-    throw error;
-  }
-};
-
-// 4. Check payment status
-export const checkStatus = async (uuid) => {
-  const url = `${baseUrl}/get-status?uuid=${uuid}`;
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        Auth: apiKey,
-      },
-    });
-
-    if (!response.ok) throw new Error(await response.text());
-    const data = await response.json();
-    console.log(` Payment status for UUID ${uuid}:`, data);
-    return { data, uuid };
-  } catch (error) {
-    console.error(' Error checking payment status:', error.message);
-    throw error;
-  }
-};
-
-// 5. B2C Direct Payout
-export const directPayout = async (payoutData) => {
-  console.log(
-    'Sending payout request to AddisPay:',
-    JSON.stringify(payoutData, null, 2)
-  );
-
-  const url = `${baseUrl}/payment/direct-b2c`;
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Auth: apiKey,
-    },
-    body: JSON.stringify(payoutData),
-  };
-
-  try {
-    const response = await fetch(url, options);
-    if (!response.ok) throw new Error(await response.text());
-    const data = await response.json();
-    console.log(' Payout processed:', data);
-    return data;
-  } catch (error) {
-    console.error(' Error processing payout:', error.message);
-    throw error;
-  }
-};
-
-// For  Production
-
-// addispay.js
-// const fetch = require('node-fetch');
-
-// const baseUrl = 'https://api.addispay.et/checkout-api/v1';
-// const apiKey = '0f7f3687-ce5a-41aa-98a1-b6ec5bdd8bee'; // Replace with your actual key
-
-// const createOrder = async (paymentData) => {
+// // 1. Create order
+// export const createOrder = async (paymentData) => {
 //   const url = `${baseUrl}/create-order`;
 //   const options = {
 //     method: 'POST',
@@ -437,12 +306,94 @@ export const directPayout = async (payoutData) => {
 //     body: JSON.stringify(paymentData),
 //   };
 
-//   const response = await fetch(url, options);
-//   if (!response.ok) throw new Error(await response.text());
-//   return await response.json();
+//   try {
+//     const response = await fetch(url, options);
+//     if (!response.ok) throw new Error(await response.text());
+//     const data = await response.json();
+//     console.log('Order created:', data);
+//     return data;
+//   } catch (error) {
+//     console.error(' Error creating order:', error.message);
+//     throw error;
+//   }
 // };
 
-// const directPayout = async (payoutData) => {
+// // 2. Check order by UUID
+// export const checkOrder = async (uuid) => {
+//   const url = `${baseUrl}/get-order?uuid=${uuid}`;
+//   try {
+//     const response = await fetch(url, {
+//       method: 'GET',
+//       headers: {
+//         Accept: 'application/json',
+//         Auth: apiKey,
+//       },
+//     });
+
+//     if (!response.ok) throw new Error(await response.text());
+//     const data = await response.json();
+//     console.log(` Order retrieved [UUID: ${uuid}]:`, data);
+//     return { data, uuid };
+//   } catch (error) {
+//     console.error(' Error checking order:', error.message);
+//     throw error;
+//   }
+// };
+
+// // 3. Initiate payment
+// export const handlePayment = async (paymentPayload) => {
+//   const url = `${baseUrl}/payment/initiate-payment`;
+//   const options = {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       Accept: 'application/json',
+//       Auth: apiKey,
+//     },
+//     body: JSON.stringify(paymentPayload),
+//   };
+
+//   try {
+//     const response = await fetch(url, options);
+//     if (!response.ok) throw new Error(await response.text());
+//     const data = await response.json();
+//     console.log('Payment initiated:', data);
+//     return data;
+//   } catch (error) {
+//     console.error(' Error initiating payment:', error.message);
+//     throw error;
+//   }
+// };
+
+// // 4. Check payment status
+// export const checkStatus = async (uuid) => {
+//   const url = `${baseUrl}/get-status?uuid=${uuid}`;
+//   try {
+//     const response = await fetch(url, {
+//       method: 'GET',
+//       headers: {
+//         Accept: 'application/json',
+//         Auth: apiKey,
+//       },
+//     });
+
+//     if (!response.ok) throw new Error(await response.text());
+//     const data = await response.json();
+//     console.log(` Payment status for UUID ${uuid}:`, data);
+//     return { data, uuid };
+//   } catch (error) {
+//     console.error(' Error checking payment status:', error.message);
+//     throw error;
+//   }
+// };
+
+// // 5. B2C Direct Payout
+// export const directPayout = async (payoutData) => {
+//   console.log(
+//     'Sending payout request to AddisPay:',
+//     JSON.stringify(payoutData, null, 2)
+//   );
+
 //   const url = `${baseUrl}/payment/direct-b2c`;
 //   const options = {
 //     method: 'POST',
@@ -454,12 +405,61 @@ export const directPayout = async (payoutData) => {
 //     body: JSON.stringify(payoutData),
 //   };
 
-//   const response = await fetch(url, options);
-//   if (!response.ok) throw new Error(await response.text());
-//   return await response.json();
+//   try {
+//     const response = await fetch(url, options);
+//     if (!response.ok) throw new Error(await response.text());
+//     const data = await response.json();
+//     console.log(' Payout processed:', data);
+//     return data;
+//   } catch (error) {
+//     console.error(' Error processing payout:', error.message);
+//     throw error;
+//   }
 // };
 
-// module.exports = {
-//   createOrder,
-//   directPayout,
-// };
+// For  Production
+
+// addispay.js
+const fetch = require('node-fetch');
+
+const baseUrl = 'https://api.addispay.et/checkout-api/v1';
+const apiKey = '0f7f3687-ce5a-41aa-98a1-b6ec5bdd8bee'; // Replace with your actual key
+
+const createOrder = async (paymentData) => {
+  const url = `${baseUrl}/create-order`;
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Auth: apiKey,
+    },
+    body: JSON.stringify(paymentData),
+  };
+
+  const response = await fetch(url, options);
+  if (!response.ok) throw new Error(await response.text());
+  return await response.json();
+};
+
+const directPayout = async (payoutData) => {
+  const url = `${baseUrl}/payment/direct-b2c`;
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Auth: apiKey,
+    },
+    body: JSON.stringify(payoutData),
+  };
+
+  const response = await fetch(url, options);
+  if (!response.ok) throw new Error(await response.text());
+  return await response.json();
+};
+
+module.exports = {
+  createOrder,
+  directPayout,
+};
