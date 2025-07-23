@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { createOrder, directPayout } = require('./addispay');
+const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = 3000;
 
@@ -140,7 +141,13 @@ app.get('/cancel', (req, res) => {
   res.redirect('/');
 });
 
-app.get('/error', (req, res) => {
+const errorRateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: { success: false, error: 'Too many requests, please try again later.' },
+});
+
+app.get('/error', errorRateLimiter, (req, res) => {
   res.sendFile(__dirname + '/public/error.html');
 });
 
