@@ -66,7 +66,11 @@ app.post('/api/create-order', async (req, res) => {
 
     res.json({
       success: true,
+
       checkout_url: `${result.checkout_url}/${result.uuid || uuid}`, 
+
+      checkout_url: `${result.checkout_url}/${result.uuid || uuid}`, ///${result.uuid || uuid}
+
       uuid: result.uuid || uuid,
     });
   } catch (error) {
@@ -138,6 +142,10 @@ app.get('/success', (req, res) => {
 
 app.get('/cancel', (req, res) => {
   res.redirect('/');
+});
+
+app.get('/error', (req, res) => {
+  res.sendFile(__dirname + '/public/error.html');
 });
 
 // Start Server
