@@ -423,7 +423,7 @@
 const fetch = require('node-fetch');
 
 const baseUrl = 'https://api.addispay.et/checkout-api/v1';
-const apiKey = '0f7f3687-ce5a-41aa-98a1-b6ec5bdd8bee'; // Replace with your actual key
+const apiKey = 'c407f7f9-6a22-45fe-92b4-80eda633e741'; // Replace with your actual key
 
 const createOrder = async (paymentData) => {
   const url = `${baseUrl}/create-order`;
